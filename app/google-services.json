@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "606989889607",
+    "firebase_url": "https://bitchapp.firebaseio.com",
+    "project_id": "bitchapp",
+    "storage_bucket": "bitchapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:606989889607:android:e70e8698420e937e",
+        "android_client_info": {
+          "package_name": "com.example.conorbyrne.bitchapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "606989889607-p337e5995nmcnejnpqi6rdbjlf39rb3f.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.conorbyrne.bitchapp",
+            "certificate_hash": "1c9b5a163b9aaed29990366f8b7e7eb67b7c614d"
+          }
+        },
+        {
+          "client_id": "606989889607-tirnks2b6705euo9vusr07qup5a7otem.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyABzD6Qs10KQMeYUjLbwxIE2mN0rFt40ac"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "606989889607-tirnks2b6705euo9vusr07qup5a7otem.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
