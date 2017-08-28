@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorPrimaryDark"
     tools:context="com.example.conorbyrne.bitchapp.StartActivity">
 
     <TextView
@@ -13,6 +14,7 @@
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         android:text="Welcome to Chatz"
+        android:textColor="@android:color/white"
         android:textSize="24sp"
         tools:layout_editor_absoluteX="89dp"
         tools:layout_editor_absoluteY="269dp" />
@@ -21,8 +23,23 @@
         android:id="@+id/reg_id"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/have_account_button_id"
+        android:layout_marginTop="20dp"
+        android:text="Need a new Acount ?"
+        android:layout_alignLeft="@+id/have_account_button_id"
+        android:layout_alignStart="@+id/have_account_button_id"
+        android:layout_alignRight="@+id/textView"
+        android:layout_alignEnd="@+id/textView" />
+
+    <Button
+        android:id="@+id/have_account_button_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textView"
+        android:layout_alignStart="@+id/textView"
         android:layout_below="@+id/textView"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="58dp"
-        android:text="Need a new Acount ?" />
+        android:layout_marginTop="40dp"
+        android:backgroundTint="@color/colorAccent"
+        android:text=" Already have account"
+        android:textColor="@android:color/white" />
 </RelativeLayout>
