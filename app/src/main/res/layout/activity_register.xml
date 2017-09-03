@@ -7,17 +7,13 @@
     tools:context="com.example.conorbyrne.bitchapp.RegisterActivity">
 
 
-    <com.wang.avi.AVLoadingIndicatorView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:indicatorName="BallPulseIndicator"
-        />
-
     <include
         android:id="@+id/reg_id"
         layout="@layout/app_bar_layout"
-        android:layout_width="wrap_content"/>
-
+        android:layout_width="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
     <Button
         android:id="@+id/reg_button"
@@ -51,8 +47,7 @@
         android:layout_marginRight="20dp"
         android:layout_marginTop="200dp"
         android:ems="10"
-        android:hint="Display Name"
-        android:inputType="textPersonName" />
+        android:hint="Display Name" />
 
     <EditText
         android:id="@+id/reg_email"
@@ -68,7 +63,7 @@
         android:layout_marginTop="20dp"
         android:ems="10"
         android:hint="Email"
-        android:inputType="textPersonName" />
+        android:inputType="textEmailAddress" />
 
     <EditText
         android:id="@+id/reg_password"
@@ -84,7 +79,7 @@
         android:layout_marginTop="20dp"
         android:ems="10"
         android:hint="Passsword"
-        android:inputType="textPersonName" />
+        android:inputType="textPassword" />
 
     <TextView
         android:id="@+id/textView2"
@@ -97,5 +92,16 @@
         android:layout_toLeftOf="@+id/reg_button"
         android:layout_toStartOf="@+id/reg_button"
         android:layout_marginTop="72dp" />
+
+    <com.wang.avi.AVLoadingIndicatorView
+        android:id="@+id/avi"
+        style="@style/AVLoadingIndicatorView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="180dp"
+        android:paddingTop="300dp"
+        android:visibility="gone"
+        app:indicatorColor="#673bb7"
+        app:indicatorName="BallPulseIndicator" />
 
 </RelativeLayout>

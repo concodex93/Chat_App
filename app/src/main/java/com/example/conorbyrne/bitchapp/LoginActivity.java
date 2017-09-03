@@ -19,6 +19,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.wang.avi.AVLoadingIndicatorView;
 
 import org.w3c.dom.Text;
 
@@ -26,6 +27,8 @@ public class LoginActivity extends AppCompatActivity {
 
     // Firebase Auth
     private FirebaseAuth mAuth;
+    // Progress bar
+    private AVLoadingIndicatorView mAvi;
 
     private EditText mEmail;
     private EditText mPassword;
@@ -38,18 +41,17 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_activity);
 
-        mAuth = FirebaseAuth.getInstance();
+        mAvi = (AVLoadingIndicatorView) findViewById(R.id.avi);
 
         mToolbar = (Toolbar) findViewById(R.id.reg_id);
         setSupportActionBar(mToolbar);
         getSupportActionBar().setTitle("Login");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-
-
         mEmail = (EditText) findViewById(R.id.log_email);
         mPassword = (EditText) findViewById(R.id.login_password);
         mLoginButton = (Button) findViewById(R.id.login_button);
+
 
         mLoginButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -59,14 +61,12 @@ public class LoginActivity extends AppCompatActivity {
                 String password = mPassword.getText().toString();
 
                 if (!TextUtils.isEmpty(email) || !TextUtils.isEmpty(password)) {
-
-                    Toast.makeText(LoginActivity.this, "Not empty",
-                            Toast.LENGTH_LONG).show();
+                    mAvi.setVisibility(View.VISIBLE);
                     loginUser(email, password);
                 } else {
 
                     Toast.makeText(LoginActivity.this, "Missing required fields",
-                            Toast.LENGTH_LONG).show();
+                            Toast.LENGTH_SHORT).show();
 
                 }
 
@@ -82,22 +82,20 @@ public class LoginActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
 
                        if(task.isSuccessful()){
-
-                           Toast.makeText(LoginActivity.this, "Success",
-                                   Toast.LENGTH_LONG).show();
-
+                           mAvi.setVisibility(View.GONE);
                            Intent mainIntent = new Intent(LoginActivity.this, MainActivity.class);
+                           mainIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
                            startActivity(mainIntent);
                            finish();
 
                        } else {
 
-                        // If sign in fails, display a message to the user. If sign in succeeds
+                           // If sign in fails, display a message to the user. If sign in succeeds
                         // the auth state listener will be notified and logic to handle the
                         // signed in user can be handled in the listener.
-
-                            Toast.makeText(LoginActivity.this, "Email or Password is Incorrect",
-                                    Toast.LENGTH_LONG).show();
+                           mAvi.setVisibility(View.GONE);
+                           Toast.makeText(LoginActivity.this, "Email or Password is Incorrect",
+                                    Toast.LENGTH_SHORT).show();
                         }
 
                     }

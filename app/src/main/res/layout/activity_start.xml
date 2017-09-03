@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        android:text="Welcome to Chatz"
+        android:text="Welcome to My App"
         android:textColor="@android:color/white"
         android:textSize="24sp"
         tools:layout_editor_absoluteX="89dp"
@@ -41,5 +41,7 @@
         android:layout_marginTop="40dp"
         android:backgroundTint="@color/colorAccent"
         android:text=" Already have account"
-        android:textColor="@android:color/white" />
+        android:textColor="@android:color/white"
+        android:layout_alignRight="@+id/textView"
+        android:layout_alignEnd="@+id/textView" />
 </RelativeLayout>
