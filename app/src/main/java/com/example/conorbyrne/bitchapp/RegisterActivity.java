@@ -18,7 +18,12 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.wang.avi.AVLoadingIndicatorView;
+
+import java.util.HashMap;
 
 import static android.R.attr.fingerprintAuthDrawable;
 import static android.R.attr.x;
@@ -31,6 +36,9 @@ public class RegisterActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
     // Progress bar
     private AVLoadingIndicatorView mAvi;
+    private FirebaseDatabase database;
+    private DatabaseReference myRef;
+
 
     private EditText mDisplayName;
     private EditText mEmail;
@@ -79,18 +87,43 @@ public class RegisterActivity extends AppCompatActivity {
 
     }
 
-    private void registerUser(String display_name, final String email, final String password){
+    private void registerUser(final String display_name, final String email, final String password){
 
         mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
 
                 if(task.isSuccessful()){
-                    mAvi.setVisibility(View.GONE);
-                    Intent mainIntent = new Intent(RegisterActivity.this, MainActivity.class);
-                    startActivity(mainIntent);
-                    finish();
 
+                    FirebaseUser current_user = FirebaseAuth.getInstance().getCurrentUser();
+
+                    String uid = current_user.getUid();
+
+                    // Write a message to the database
+                    database = FirebaseDatabase.getInstance();
+                    myRef = database.getReference().child("Users").child(uid);
+
+                    HashMap<String, String>  user_map = new HashMap<String, String>();
+                    user_map.put("name", display_name);
+                    user_map.put("status", "Hi there I'm using your App!");
+                    user_map.put("image", "default");
+                    user_map.put("thumb_image", "default");
+
+
+                    myRef.setValue(user_map).addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+
+                            if(task.isSuccessful()){
+                                mAvi.setVisibility(View.GONE);
+
+                                Intent mainIntent = new Intent(RegisterActivity.this, MainActivity.class);
+                                mainIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                startActivity(mainIntent);
+                                finish();
+                            }
+                        }
+                    });
                 }
 
                 else{
