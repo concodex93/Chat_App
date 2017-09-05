@@ -23,6 +23,8 @@ import com.wang.avi.AVLoadingIndicatorView;
 
 import org.w3c.dom.Text;
 
+import static android.text.TextUtils.isEmpty;
+
 public class LoginActivity extends AppCompatActivity {
 
     // Firebase Auth
@@ -42,7 +44,8 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login_activity);
 
         mAvi = (AVLoadingIndicatorView) findViewById(R.id.avi);
-
+        mAuth = FirebaseAuth.getInstance();
+        // Toolbar
         mToolbar = (Toolbar) findViewById(R.id.reg_id);
         setSupportActionBar(mToolbar);
         getSupportActionBar().setTitle("Login");
@@ -60,14 +63,15 @@ public class LoginActivity extends AppCompatActivity {
                 String email = mEmail.getText().toString();
                 String password = mPassword.getText().toString();
 
-                if (!TextUtils.isEmpty(email) || !TextUtils.isEmpty(password)) {
+                if (!email.isEmpty() || !password.isEmpty()) {
                     mAvi.setVisibility(View.VISIBLE);
+                    Toast.makeText(LoginActivity.this, "waiting ...",
+                            Toast.LENGTH_SHORT).show();
                     loginUser(email, password);
                 } else {
 
                     Toast.makeText(LoginActivity.this, "Missing required fields",
                             Toast.LENGTH_SHORT).show();
-
                 }
 
             }
@@ -85,16 +89,13 @@ public class LoginActivity extends AppCompatActivity {
                            mAvi.setVisibility(View.GONE);
                            Intent mainIntent = new Intent(LoginActivity.this, MainActivity.class);
                            startActivity(mainIntent);
-                           finish();
+                           Toast.makeText(LoginActivity.this, "Logged in", Toast.LENGTH_SHORT).show();
+//                           finish();
 
                        } else {
 
-                           // If sign in fails, display a message to the user. If sign in succeeds
-                        // the auth state listener will be notified and logic to handle the
-                        // signed in user can be handled in the listener.
                            mAvi.setVisibility(View.GONE);
-                           Toast.makeText(LoginActivity.this, "Email or Password is Incorrect",
-                                    Toast.LENGTH_SHORT).show();
+                           Toast.makeText(LoginActivity.this, "Email or Password is Incorrect", Toast.LENGTH_SHORT).show();
                         }
 
                     }

@@ -78,7 +78,6 @@ public class RegisterActivity extends AppCompatActivity {
                     mAvi.setVisibility(View.VISIBLE);
                     registerUser(display_name,email,password);
 
-
                 }
 
             }
