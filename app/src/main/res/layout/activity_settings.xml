@@ -22,34 +22,25 @@
         android:id="@+id/user_display_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/default_profile"
-        android:layout_alignLeft="@+id/default_profile"
-        android:layout_alignRight="@+id/default_profile"
-        android:layout_alignStart="@+id/default_profile"
-        android:layout_below="@+id/default_profile"
-        android:layout_marginTop="16dp"
-        android:paddingLeft="20dp"
-        android:paddingRight="7dp"
+        android:layout_marginTop="18dp"
         android:text="Display Name"
         android:textColor="@android:color/white"
         android:textSize="22sp"
         tools:layout_editor_absoluteX="89dp"
-        tools:layout_editor_absoluteY="269dp" />
+        tools:layout_editor_absoluteY="269dp"
+        android:layout_below="@+id/default_profile"
+        android:layout_centerHorizontal="true" />
 
     <TextView
         android:id="@+id/user_status"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/user_display_name"
-        android:layout_alignLeft="@+id/user_display_name"
-        android:layout_alignRight="@+id/user_display_name"
-        android:layout_alignStart="@+id/user_display_name"
-        android:layout_below="@+id/user_display_name"
-        android:layout_marginTop="12dp"
-        android:paddingLeft="10dp"
+        android:layout_marginTop="14dp"
         android:text="Hi there, I am using your App!"
         android:textColor="@android:color/white"
-        android:textSize="12sp" />
+        android:textSize="12dp"
+        android:layout_below="@+id/user_display_name"
+        android:layout_centerHorizontal="true" />
 
     <Button
         android:id="@+id/change_image_btn"

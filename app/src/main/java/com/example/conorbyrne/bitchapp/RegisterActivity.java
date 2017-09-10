@@ -34,11 +34,11 @@ public class RegisterActivity extends AppCompatActivity {
 
     // Firebase Auth
     private FirebaseAuth mAuth;
-    // Progress bar
-    private AVLoadingIndicatorView mAvi;
     private FirebaseDatabase database;
     private DatabaseReference myRef;
 
+    // Progress bar
+    private AVLoadingIndicatorView mAvi;
 
     private EditText mDisplayName;
     private EditText mEmail;
