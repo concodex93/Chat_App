@@ -46,13 +46,13 @@
         android:id="@+id/change_image_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Change Image"
-        android:layout_marginBottom="11dp"
         android:layout_above="@+id/user_status_btn"
-        android:layout_alignRight="@+id/user_status_btn"
         android:layout_alignEnd="@+id/user_status_btn"
-        android:layout_alignLeft="@+id/default_profile"
-        android:layout_alignStart="@+id/default_profile" />
+        android:layout_alignLeft="@+id/user_status_btn"
+        android:layout_alignRight="@+id/user_status_btn"
+        android:layout_alignStart="@+id/user_status_btn"
+        android:layout_marginBottom="14dp"
+        android:text="Change Image" />
 
     <Button
         android:id="@+id/user_status_btn"
